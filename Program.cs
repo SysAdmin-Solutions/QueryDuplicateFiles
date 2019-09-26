@@ -65,7 +65,8 @@ class QueryDuplicateFileNames
         // var can be used for convenience with groups. 
             var queryDupNames =
                 from file in fileList
-                where (file.FullName.Contains("pdf") || (file.FullName.Contains("dwg")) || (file.FullName.Contains("slddrw")))
+                // Uncomment the line below to specify the extensions you want to search for.
+                //where (file.FullName.Contains("pdf") || (file.FullName.Contains("dwg")) || (file.FullName.Contains("slddrw")))
                 group file.FullName.Substring(charsToSkip) by (file.Name.Substring(0, (file.Name.Length - file.Extension.Length) )) into fileGroup
                 //group file.FullName.Substring(charsToSkip) by file.Name into fileGroup
                 where (fileGroup.Count() > 1)
